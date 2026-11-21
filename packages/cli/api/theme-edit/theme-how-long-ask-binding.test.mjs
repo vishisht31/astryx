@@ -952,6 +952,21 @@ describe('an undo that names a mode, on a theme that sets the thing', () => {
     }
   }, 300_000);
 
+  it('on a theme with one mode, takes back its setting in that mode', async test => {
+    if (unbuilt) {
+      console.warn(`skipped: ${unbuilt}`);
+      test.skip();
+    }
+    // (An accent saved for both modes, then the theme made dark only: its
+    // one setting is the dark mode's.)
+    await themeEditNew('mo', {cwd, like: 'neutral'});
+    await themeEditSet('mo', '--color-accent', '#2563eb', {cwd});
+    await themeEditSet('mo', 'mode', 'dark-only', {cwd});
+    const r = await lines('mo', 'reset the dark mode accent');
+    expect(r.writes).toEqual(['undo mo --color-accent']);
+    expect(r.text).not.toMatch(/both modes/);
+  }, 300_000);
+
   it('on its own, takes back only a setting of that mode', async test => {
     if (unbuilt) {
       console.warn(`skipped: ${unbuilt}`);

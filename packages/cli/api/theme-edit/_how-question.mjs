@@ -12346,12 +12346,13 @@ export function draftAnswer(ctx, env, question) {
   fillAspect();
   const modal = env.data.mode === 'both';
   /**
-   * The mode a clause says in its own words: a mode carried in from the
-   * clause before limits nothing.
+   * The mode a clause says in its own words, on a theme with both modes: a
+   * mode carried in from the clause before, or a one-mode theme's only
+   * mode, limits nothing.
    * @param {any} c
    */
   const saidMode = c =>
-    c?.mode && new RegExp(`\\b${c.mode}\\b`, 'i').test(c.text ?? '')
+    modal && c?.mode && new RegExp(`\\b${c.mode}\\b`, 'i').test(c.text ?? '')
       ? /** @type {string} */ (c.mode)
       : null;
   /**
