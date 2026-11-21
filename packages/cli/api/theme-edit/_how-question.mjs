@@ -5464,8 +5464,11 @@ export function draftAnswer(ctx, env, question) {
       '$1 $2 ',
     );
   // (A color said for a mode or for everything is the page.)
-  question = colorsSaidForPages(question, isHue, w =>
-    new RegExp(`^(?:${SHADE_WORDS})$`).test(w),
+  question = colorsSaidForPages(
+    question,
+    isHue,
+    w => new RegExp(`^(?:${SHADE_WORDS})$`).test(w),
+    env.data?.mode === 'both',
   );
   question = question
     // ("dark purple theme", "moody dark purple": dark said of a whole look
