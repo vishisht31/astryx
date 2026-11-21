@@ -1,9 +1,8 @@
 ---
 '@astryxdesign/theme-butter': patch
-'@astryxdesign/theme-y2k': patch
 '@astryxdesign/cli': patch
 ---
 
-[fix] Butter's selector, multi-selector, typeahead and tokenizer keep Core's top and bottom padding, so a small select is 32px tall beside a 32px button and field instead of 38px. Butter's and Y2K's badges take the element corners (8px in Butter, square in Y2K), as their buttons and inputs do, instead of pill corners. The CLI's bundled copies of both themes, which `astryx theme eject` hands out, change the same way.
+[fix] Butter's selector, multi-selector, typeahead and tokenizer keep Core's top and bottom padding, so a small select is 32px tall beside a 32px button and field instead of 38px. The CLI's bundled copy of Butter, which `astryx theme eject` hands out, changes the same way. To keep the taller fields, extend the theme with `components: {selector: {base: {paddingBlock: 'var(--spacing-2)'}}}` (and the same for `multi-selector`, `typeahead` and `tokenizer`).
 
 @josephfarina

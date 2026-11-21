@@ -410,7 +410,7 @@ export const butterTheme = defineTheme({
     // Typography override
     '--text-supporting-size': '0.75rem', // 12px at the default root size
 
-    // Element sizes — slightly taller defaults so the new input padding
+    // Element sizes — slightly taller defaults, so the text fields' padding
     // (--spacing-2 block) has room to breathe.
     '--size-element-sm': '32px',
     '--size-element-md': '40px',
@@ -808,7 +808,8 @@ export const butterTheme = defineTheme({
       },
     },
 
-    // Inputs — softer border than default, more vertical breathing room.
+    // Inputs — softer border than default; the text fields get more
+    // vertical breathing room.
     // Status modifiers also remap the semantic tokens locally so the
     // status icon + border read as the same vivid hue as the banner
     // (icons inherit from --color-{success,warning,error}).
